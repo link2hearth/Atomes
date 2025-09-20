@@ -1,3 +1,4 @@
+
 (() => {
 class LayeredNumber {
   constructor(layer = 0, mag = 0) {

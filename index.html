@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atomes Clicker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="starfield"></div>
+  <div class="app-shell">
+    <header class="top-bar">
+      <div class="brand">⚛️ Atomes</div>
+      <nav class="main-nav">
+        <button class="nav-btn active" data-target="atomes">Atomes</button>
+        <button class="nav-btn" data-target="shop">Shop</button>
+        <button class="nav-btn" data-target="options">Options</button>
+        <button class="nav-btn" data-target="tableau">Tableau</button>
+        <button class="nav-btn" data-target="molecules">Molécules</button>
+        <button class="nav-btn" data-target="bigbang">Big Bang</button>
+      </nav>
+    </header>
+
+    <main class="view-container">
+      <section id="view-atomes" class="view active">
+        <div class="stats-panel">
+          <div class="stat">
+            <span class="label">Atomes</span>
+            <span class="value" id="atoms-total">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">APS</span>
+            <span class="value" id="atoms-per-sec">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">APC</span>
+            <span class="value" id="atoms-per-click">0</span>
+          </div>
+        </div>
+        <div class="atom-playground">
+          <img src="Assets/Image/Atom.png" alt="Atom" id="atom-button" />
+          <p class="hint">Cliquez n'importe où dans la zone pour générer des atomes.</p>
+        </div>
+      </section>
+
+      <section id="view-shop" class="view">
+        <h2>Boutique Quantique</h2>
+        <div id="shop-items" class="shop-grid"></div>
+      </section>
+
+      <section id="view-options" class="view">
+        <h2>Options</h2>
+        <p>Les paramètres d'accessibilité, audio et sauvegardes arriveront bientôt.</p>
+      </section>
+
+      <section id="view-tableau" class="view">
+        <h2>Tableau périodique</h2>
+        <p>Collectez les 118 éléments pour débloquer des synergies cosmiques.</p>
+      </section>
+
+      <section id="view-molecules" class="view">
+        <h2>Molécules</h2>
+        <p>Fusionnez vos éléments pour créer des molécules légendaires.</p>
+      </section>
+
+      <section id="view-bigbang" class="view">
+        <h2>Big Bang</h2>
+        <p>Déclenchez un nouveau cycle d'univers pour accélérer votre progression.</p>
+      </section>
+    </main>
+  </div>
+
+  <audio id="click-sound" src="Assets/Sounds/pop.mp3" preload="auto"></audio>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

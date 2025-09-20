@@ -24,22 +24,23 @@
       </nav>
     </header>
 
+    <div class="status-bar">
+      <div class="status-item">
+        <span class="status-label">APC :</span>
+        <span class="status-value" id="atoms-per-click">0</span>
+      </div>
+      <div class="status-item status-item-center">
+        <span class="status-label">Atomes</span>
+        <span class="status-value" id="atoms-total">0</span>
+      </div>
+      <div class="status-item status-item-right">
+        <span class="status-label">APS :</span>
+        <span class="status-value" id="atoms-per-sec">0</span>
+      </div>
+    </div>
+
     <main class="view-container">
       <section id="view-atomes" class="view active">
-        <div class="stats-panel">
-          <div class="stat">
-            <span class="label">Atomes</span>
-            <span class="value" id="atoms-total">0</span>
-          </div>
-          <div class="stat">
-            <span class="label">APS</span>
-            <span class="value" id="atoms-per-sec">0</span>
-          </div>
-          <div class="stat">
-            <span class="label">APC</span>
-            <span class="value" id="atoms-per-click">0</span>
-          </div>
-        </div>
         <div class="atom-playground">
           <img src="Assets/Image/Atom.png" alt="Atom" id="atom-button" />
           <p class="hint">Cliquez n'importe où dans la zone pour générer des atomes.</p>

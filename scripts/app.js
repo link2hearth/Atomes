@@ -1,4 +1,11 @@
-import { LayeredNumber } from './layered-number.js';
+
+(() => {
+const LayeredNumber = window.LayeredNumber;
+
+if (!LayeredNumber) {
+  console.error('LayeredNumber introuvable, impossible de démarrer le jeu.');
+  return;
+}
 
 const state = {
   atoms: LayeredNumber.zero(),
@@ -222,3 +229,4 @@ function gameLoop(time) {
 renderShop();
 updateStats();
 requestAnimationFrame(gameLoop);
+})();

@@ -1,3 +1,5 @@
+
+(() => {
 class LayeredNumber {
   constructor(layer = 0, mag = 0) {
     this.layer = layer;
@@ -280,8 +282,18 @@ class LayeredNumber {
   }
 }
 
-if (typeof window !== 'undefined') {
-  window.LayeredNumber = LayeredNumber;
-}
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = LayeredNumber;
+    module.exports.LayeredNumber = LayeredNumber;
+  }
 
-export { LayeredNumber };
+  const globalScope = typeof window !== 'undefined'
+    ? window
+    : typeof globalThis !== 'undefined'
+      ? globalThis
+      : undefined;
+
+  if (globalScope) {
+    globalScope.LayeredNumber = LayeredNumber;
+  }
+})();

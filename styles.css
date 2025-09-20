@@ -1,0 +1,369 @@
+:root {
+  color-scheme: dark;
+  --bg-gradient: radial-gradient(circle at 20% 20%, rgba(105, 95, 255, 0.35), transparent 65%),
+    radial-gradient(circle at 80% 30%, rgba(255, 77, 196, 0.25), transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(35, 204, 255, 0.2), transparent 65%),
+    #050510;
+  --accent: #7a5cff;
+  --accent-strong: #a96bff;
+  --accent-soft: rgba(122, 92, 255, 0.25);
+  --text-primary: #f1f5ff;
+  --text-secondary: #8f9edc;
+  --surface: rgba(9, 15, 32, 0.8);
+  --surface-hover: rgba(13, 21, 45, 0.95);
+  --border-glow: rgba(122, 92, 255, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background: #050510;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+.cosmic-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: var(--bg-gradient);
+}
+
+.stars {
+  position: absolute;
+  inset: -100px;
+  background-repeat: repeat;
+  background-image: radial-gradient(2px 2px at 50% 50%, rgba(255, 255, 255, 0.9), transparent);
+  animation: twinkle 12s linear infinite;
+  opacity: 0.45;
+}
+
+.layer-1 {
+  background-size: 120px 120px;
+  animation-duration: 18s;
+}
+
+.layer-2 {
+  background-size: 220px 220px;
+  animation-duration: 26s;
+  opacity: 0.35;
+}
+
+.layer-3 {
+  background-size: 320px 320px;
+  animation-duration: 36s;
+  opacity: 0.25;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.6rem;
+  background: rgba(2, 4, 12, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122, 92, 255, 0.25);
+  z-index: 10;
+}
+
+.brand {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.main-nav {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.nav-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  transition: background 160ms ease, color 160ms ease, border 160ms ease;
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--border-glow);
+  background: rgba(122, 92, 255, 0.12);
+}
+
+.nav-btn.active {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: rgba(122, 92, 255, 0.22);
+  box-shadow: 0 0 12px rgba(122, 92, 255, 0.25);
+}
+
+.app-shell {
+  padding-top: 4.5rem;
+  min-height: 100vh;
+}
+
+.view {
+  display: none;
+  padding: 2.5rem clamp(1rem, 5vw, 5rem);
+}
+
+.view.active {
+  display: block;
+}
+
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.counter {
+  background: var(--surface);
+  border: 1px solid rgba(122, 92, 255, 0.2);
+  border-radius: 16px;
+  padding: 1rem 1.4rem;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(32, 16, 72, 0.35);
+}
+
+.counter .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.counter .value {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.9rem;
+}
+
+.click-zone {
+  margin: 0 auto;
+  max-width: 420px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(12, 16, 40, 0.75), rgba(25, 12, 60, 0.45));
+  border-radius: 30px;
+  position: relative;
+  border: 2px solid rgba(122, 92, 255, 0.35);
+  box-shadow: inset 0 0 20px rgba(122, 92, 255, 0.25), 0 25px 45px rgba(8, 6, 24, 0.65);
+  cursor: pointer;
+  outline: none;
+}
+
+.click-zone::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(122, 92, 255, 0.25);
+  pointer-events: none;
+}
+
+.ambient-pulse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(122, 92, 255, 0.25);
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: transform 900ms ease, opacity 900ms ease;
+  pointer-events: none;
+}
+
+.ambient-pulse.visible {
+  transform: translate(-50%, -50%) scale(1.45);
+  opacity: 0.8;
+  border-color: rgba(168, 130, 255, 0.45);
+}
+
+
+.atom-icon {
+  width: clamp(160px, 30vw, 260px);
+  transition: transform 120ms ease;
+  filter: drop-shadow(0 0 25px rgba(122, 92, 255, 0.35));
+}
+
+.atom-icon.shake {
+  animation: shake 320ms ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  20% {
+    transform: translate(-6px, 4px) scale(1.02);
+  }
+  40% {
+    transform: translate(5px, -6px) scale(0.98);
+  }
+  60% {
+    transform: translate(-4px, 5px) scale(1.03);
+  }
+  80% {
+    transform: translate(3px, -4px) scale(0.99);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.cta {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.view h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.view p {
+  max-width: 640px;
+  color: var(--text-secondary);
+}
+
+.shop-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.shop-card {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 1.4rem;
+  border: 1px solid rgba(122, 92, 255, 0.18);
+  box-shadow: 0 25px 35px rgba(7, 4, 24, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(122, 92, 255, 0.22), transparent 55%);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.shop-card:hover::before {
+  opacity: 1;
+}
+
+.shop-card h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.shop-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.shop-card button {
+  align-self: flex-start;
+  border: none;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 18px 28px rgba(122, 92, 255, 0.35);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.shop-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.shop-card button:not(:disabled):hover,
+.shop-card button:not(:disabled):focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 720px) {
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav-btn {
+    font-size: 0.65rem;
+    padding: 0.45rem 0.6rem;
+  }
+
+  .click-zone {
+    max-width: 320px;
+  }
+}
